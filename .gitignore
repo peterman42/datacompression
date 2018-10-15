@@ -1,1 +1,7 @@
 *.user
+*.suo
+*.obj
+*.pdb
+*.filters
+vs2015/bin/*
+vs2015/.vs/*
