@@ -9,6 +9,8 @@ public:
 
     std::string payload;
 
+    ///////////////////////////////////////////////////////////////////////////////
+    void compress();
 
     LZ77(std::string _payload);
     ~LZ77() = default;
