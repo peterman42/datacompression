@@ -2,12 +2,14 @@
 #define LZ77_H
 
 #include <string>
+#include <map>
 
 class LZ77
 {
 public:
 
     std::string payload;
+    std::map<std::string,std::tuple<int,int,std::string>> dictionary;
 
     ///////////////////////////////////////////////////////////////////////////////
     void compress();
