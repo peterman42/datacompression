@@ -28,8 +28,8 @@ private :
     uint32_t search_buffer_size;
     uint32_t lookahead_buffer_size;
     std::string payload;
-    std::list tuples;
-    std::list search_buffer;
-    std::list lookahead_buffer;
+    std::list<std::tuple<int32_t,uint32_t, char>> tuples;
+    std::list<char> search_buffer;
+    std::list<char> lookahead_buffer;
 };
 #endif // LZ77_H
