@@ -3,7 +3,7 @@
 
 int main(int argc, char* argv[])
 {
-    LZ77 encoder(argv[1]);
+    LZ77 encoder(6, 4, argv[1]);
     encoder.compress();
 
     return 0;
