@@ -24,14 +24,26 @@ void
 LZ77::compress()
 {
     // {0,0,""} 1: position, 2: length, 3: next character
-    std::list buffer(payload.begin(), payload.end());
-    for(char character : payload)
+    bool done = true;
+    size_t cursor = 0;
+    while(done)
     {
-        std::find_if(search_buffer.begin(),search_buffer.end(),[](auto tuple)
+        //char next_char = -1;
+        if(search_buffer.size() == 0)
         {
-
-        });
-
-        std::cout << "Character :: " << character << std::endl;
+            tuples.push_back(std::make_tuple(-1,0,payload[0]));
+            // Push the character into the search buffer.
+            search_buffer.push_back(first_char);
+        }
+        else
+        {
+            char character = '';
+            while(true)
+            {
+                character = payload[cursor];
+                cursor = std::distance(search_buffer.begin(), std::find(search_buffer.begin(),search_buffer.end(), character));
+                break;
+            }
+        }
     }
 }
