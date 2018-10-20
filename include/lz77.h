@@ -13,7 +13,7 @@ public:
     std::map<std::string,std::tuple<int,int,std::string>> dictionary;
 
     ///////////////////////////////////////////////////////////////////////////////
-    void compress();
+    void encode();
 
     LZ77( uint32_t _search_buffer_size
         , uint32_t _lookahead_buffer_size

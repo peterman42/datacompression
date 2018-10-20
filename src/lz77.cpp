@@ -21,7 +21,7 @@ LZ77::LZ77( uint32_t _search_buffer_size
 
 ///////////////////////////////////////////////////////////////////////////////
 void
-LZ77::compress()
+LZ77::encode()
 {
     // {0,0,""} 1: position, 2: length, 3: next character
     bool done = true;
