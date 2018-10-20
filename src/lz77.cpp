@@ -37,25 +37,65 @@ LZ77::encode()
         //char next_char = -1;
         if(search_buffer.size() == 0)
         {
-            char first_char = lookahead_buffer[0];
-            tuples.push_back(std::make_tuple(-1,0,payload[0]));
+            char first_char = lookahead_buffer.front();
+            tuples.push_back(std::make_tuple(-1,0,first_char));
+
             // Push the character into the search buffer.
             search_buffer.push_back(first_char);
+
+            // Pop one character from the lookahead_buffer
+            lookahead_buffer.erase(lookahead_buffer.begin());
+
+            // Pop one character from the lookahead_buffer
+            lookahead_buffer.push_back(payload[cursor+lookahead_buffer_size]);
+
+            // Increase cursor one position.
+            cursor++;
         }
         else
         {
-            char character = 1;
+            int32_t position         = 0; // Position of first character that we found. This is the position that will be placed in the tuple.
+            uint32_t length          = 0; // The length of matching pattern.
+            bool found               = false; // This is a flag, marking that we found at least one character into the search_buffer.
+            uint32_t current_lookahead_index = 0; // The current index of character of lookahead_buffer that we looking for into the search_buffer.
+            auto start_search_itr    = search_buffer.begin();   // The start iterator into the
+            auto end_search_itr      = search_buffer.end();
             while(true)
             {
-                character = lookahead_buffer[cursor];
-                auto itr = std::find(search_buffer.begin(), search_buffer.end(), character);
-                if(itr != search_buffer.end())
+                char character = lookahead_buffer[current_lookahead_index];
+                auto itr = std::find(start_search_itr, end_search_itr, character);
+                if(itr != end_search_itr)
                 {
-
-                    cursor = std::distance(search_buffer.begin(), itr);
+                    if(!found)
+                    {
+                        // Distance from the begining.
+                        int32_t dist_from_beginning = std::distance(start_search_itr, itr);
+                        // Distance from the end.
+                        position = search_buffer_size - dist_from_beginning;
+                        found = true;
+                    }
+                    length++;
+                    current_lookahead_index++;
+                    start_search_itr++; // Increase the start iterator to the next.
+                    end_search_itr = start_search_itr + 1; // Assigning the end iterator equals to the next of the start iterator.
                 }
+                else
+                {
+                    // The character doesn't exist on the search_buffer so, insert a tuple specifying this
+                    // character and break from loop.
+                    tuples.push_back(std::make_tuple(position, length, character));
 
-                break;
+                    // Push the character into the search buffer.
+                    search_buffer.push_back(character);
+
+                    // Pop one character from the lookahead_buffer
+                    lookahead_buffer.erase(lookahead_buffer.begin());
+
+                    // Pop one character from the lookahead_buffer
+                    lookahead_buffer.push_back(payload[cursor+lookahead_buffer_size]);
+
+                    break;
+                }
             }
         }
     }
