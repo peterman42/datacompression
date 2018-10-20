@@ -54,12 +54,12 @@ LZ77::encode()
         }
         else
         {
-            int32_t position         = 0; // Position of first character that we found. This is the position that will be placed in the tuple.
-            uint32_t length          = 0; // The length of matching pattern.
-            bool found               = false; // This is a flag, marking that we found at least one character into the search_buffer.
-            uint32_t current_lookahead_index = 0; // The current index of character of lookahead_buffer that we looking for into the search_buffer.
-            auto start_search_itr    = search_buffer.begin();   // The start iterator into the
-            auto end_search_itr      = search_buffer.end();
+            int32_t position         = 0;                       // Position of first character that we found. This is the position that will be placed in the tuple.
+            uint32_t length          = 0;                       // The length of matching pattern.
+            bool found               = false;                   // This is a flag, marking that we found at least one character into the search_buffer.
+            uint32_t current_lookahead_index = 0;               // The current index of character of lookahead_buffer that we looking for into the search_buffer.
+            auto start_search_itr    = search_buffer.begin();   // The start iterator.
+            auto end_search_itr      = search_buffer.end();     // The end iterator.
             while(true)
             {
                 char character = lookahead_buffer[current_lookahead_index];
