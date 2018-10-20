@@ -19,7 +19,7 @@ public:
 
     LZ77( uint32_t _search_buffer_size
         , uint32_t _lookahead_buffer_size
-        , std::string _payload);
+        , const std::string& _payload);
     ~LZ77() = default;
     LZ77()  = default;
     LZ77(const LZ77& T)            = default;

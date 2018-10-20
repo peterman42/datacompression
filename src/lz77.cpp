@@ -5,7 +5,7 @@
 
 LZ77::LZ77( uint32_t _search_buffer_size
           , uint32_t _lookahead_buffer_size
-          , std::string _payload)
+          , const std::string& _payload)
     : search_buffer_size(_search_buffer_size)
     , lookahead_buffer_size(_lookahead_buffer_size)
     , payload(_payload)
