@@ -76,8 +76,15 @@ LZ77::encode()
                     }
                     length++;
                     current_lookahead_index++;
-                    start_search_itr++; // Increase the start iterator to the next.
-                    end_search_itr = start_search_itr + 1; // Assigning the end iterator equals to the next of the start iterator.
+                    if(start_search_itr == search_buff.end()-1)
+                    {
+
+                    }
+                    else
+                    {
+                        start_search_itr++; // Increase the start iterator to the next.
+                        end_search_itr = start_search_itr + 1; // Assigning the end iterator equals to the next of the start iterator.
+                    }
                 }
                 else
                 {
