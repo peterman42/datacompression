@@ -72,7 +72,10 @@ LZ77::encode()
                         position = search_buffer_size - dist_from_beginning;
                         found = true;
                     }
+                    // Increase length.
                     length++;
+
+                    // Increase the counter pointed to the lookahead buffer.
                     current_lookahead_index++;
 
                     if(start_search_itr == search_buffer.end()-1)
