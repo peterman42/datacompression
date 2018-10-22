@@ -95,10 +95,13 @@ LZ77::encode()
                     makeTuplesAndShift( position
                                       , length
                                       , character
-                                      , payload[cursor+lookahead_buffer_size]);
+                                      , payload[cursor]);
 
                     break;                    
                 }
+
+                // Increase cursor one position.
+                cursor++;
             }
         }
     }
