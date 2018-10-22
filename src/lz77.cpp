@@ -38,13 +38,12 @@ LZ77::encode()
         if(search_buffer.size() == 0)
         {
             char first_char = lookahead_buffer.front();
-            tuples.push_back(std::make_tuple(-1,0,first_char));
-
-            // Shift forward the search buffer.
-            shiftBuffer(search_buffer, first_char, search_buffer_size);
-
-            // Shift forward the lookahead buffer.
-            shiftBuffer(lookahead_buffer, payload[cursor+lookahead_buffer_size], lookahead_buffer_size);
+            // 1) Create the tuple and insert it into the 'tuples',
+            // 2) Shift forward the search and lookahead buffers
+            makeTuplesAndShift( 0
+                              , 0
+                              , first_char
+                              , payload[cursor]);
 
             // Increase cursor one position.
             cursor++;
