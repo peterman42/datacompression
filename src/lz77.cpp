@@ -57,14 +57,16 @@ LZ77::encode()
             uint32_t current_lookahead_index = 0;               // The current index of character of lookahead_buffer that we looking for into the search_buffer.
             auto start_search_itr    = search_buffer.begin();   // The start iterator.
             auto end_search_itr      = search_buffer.end();     // The end iterator.
+            char character           = 0;
             while(true)
             {
-                char character = lookahead_buffer[current_lookahead_index];
+                character = lookahead_buffer[current_lookahead_index];
                 auto itr = std::find(start_search_itr, end_search_itr, character);
                 if(itr != end_search_itr)
                 {
                     if(!found)
-                    {
+                    { // If it's the first time set the position.
+
                         // Distance from the begining.
                         int32_t dist_from_beginning = std::distance(start_search_itr, itr);
                         // Distance from the end.
@@ -79,23 +81,20 @@ LZ77::encode()
                     }
                     else
                     {
-                        start_search_itr++; // Increase the start iterator to the next.
+                        start_search_itr++;                    // Increase the start iterator to the next.
                         end_search_itr = start_search_itr + 1; // Assigning the end iterator equals to the next of the start iterator.
                     }
                 }
                 else
                 {
-                    // The character doesn't exist on the search_buffer so, insert a tuple specifying this
-                    // character and break from loop.
-                    tuples.push_back(std::make_tuple(position, length, character));
+                    // 1) Create the tuple and insert it into the 'tuples',
+                    // 2) Shift forward the search and lookahead buffers
+                    makeTuplesAndShift( position
+                                      , length
+                                      , character
+                                      , payload[cursor+lookahead_buffer_size]);
 
-                    // Shift forward the search buffer.
-                    shiftBuffer(search_buffer, character, search_buffer_size);
-
-                    // Shift forward the lookahead buffer.
-                    shiftBuffer(lookahead_buffer, payload[cursor+lookahead_buffer_size], lookahead_buffer_size);
-
-                    break;
+                    break;                    
                 }
             }
         }
@@ -103,11 +102,12 @@ LZ77::encode()
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-void
+bool
 LZ77::shiftBuffer( const std::vector<char>& buffer
                  , char newEntry
                  , uint32_t maxSize)
 {
+    bool status = true;
     try
     {
         if(buffer.size() == maxSize)
@@ -125,8 +125,38 @@ LZ77::shiftBuffer( const std::vector<char>& buffer
     }
     catch(...)
     {
-
+        status = false;
     }
+    return status;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+bool
+LZ77::makeTuplesAndShift( uint32_t position
+                        , uint32_t length
+                        , char nextChar
+                        , char nextCharInLookAheadBuffer)
+{
+    bool status = true;
+    try
+    {
+        // The character doesn't exist on the search_buffer so, insert a tuple specifying this
+        // character and break from loop.
+        tuples.push_back(std::make_tuple(position, length, nextChar));
+
+        // Shift forward the search buffer.
+        status = shiftBuffer(search_buffer, nextChar, search_buffer_size);
+
+        if(!status) throw;
+
+        // Shift forward the lookahead buffer.
+        status = shiftBuffer(lookahead_buffer, nextCharInLookAheadBuffer, lookahead_buffer_size);
+    }
+    catch(...)
+    {
+        status = false;
+    }
+    return status;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
