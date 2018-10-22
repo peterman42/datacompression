@@ -109,7 +109,7 @@ LZ77::encode()
 
 ///////////////////////////////////////////////////////////////////////////////
 bool
-LZ77::shiftBuffer( const std::vector<char>& buffer
+LZ77::shiftBuffer( std::vector<char>& buffer
                  , char newEntry
                  , uint32_t maxSize)
 {

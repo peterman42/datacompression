@@ -30,7 +30,7 @@ public:
 private :
 
     ///////////////////////////////////////////////////////////////////////////////
-    bool shiftBuffer( const std::vector<char>& buffer
+    bool shiftBuffer( std::vector<char>& buffer
                     , char newEntry
                     , uint32_t maxSize);
 
