@@ -74,7 +74,8 @@ LZ77::encode()
                     }
                     length++;
                     current_lookahead_index++;
-                    if(start_search_itr == search_buff.end()-1)
+
+                    if(start_search_itr == search_buffer.end()-1)
                     {
 
                     }
