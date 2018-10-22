@@ -14,6 +14,7 @@ public:
 
     ///////////////////////////////////////////////////////////////////////////////
     void encode();
+
     ///////////////////////////////////////////////////////////////////////////////
     std::string decode();
 
@@ -27,6 +28,12 @@ public:
     LZ77(LZ77&& T)                 = default;
     LZ77& operator=(LZ77&& T)      = default;
 private :
+
+    ///////////////////////////////////////////////////////////////////////////////
+    void shiftBuffer( const std::vector<char>& buffer
+                    , char newEntry
+                    , uint32_t maxSize);
+
     uint32_t search_buffer_size;
     uint32_t lookahead_buffer_size;
     std::string payload;

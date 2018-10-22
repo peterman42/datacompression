@@ -40,14 +40,11 @@ LZ77::encode()
             char first_char = lookahead_buffer.front();
             tuples.push_back(std::make_tuple(-1,0,first_char));
 
-            // Push the character into the search buffer.
-            search_buffer.push_back(first_char);
+            // Shift forward the search buffer.
+            shiftBuffer(search_buffer, first_char, search_buffer_size);
 
-            // Pop one character from the lookahead_buffer
-            lookahead_buffer.erase(lookahead_buffer.begin());
-
-            // Pop one character from the lookahead_buffer
-            lookahead_buffer.push_back(payload[cursor+lookahead_buffer_size]);
+            // Shift forward the lookahead buffer.
+            shiftBuffer(lookahead_buffer, payload[cursor+lookahead_buffer_size], lookahead_buffer_size);
 
             // Increase cursor one position.
             cursor++;
@@ -92,19 +89,43 @@ LZ77::encode()
                     // character and break from loop.
                     tuples.push_back(std::make_tuple(position, length, character));
 
-                    // Push the character into the search buffer.
-                    search_buffer.push_back(character);
+                    // Shift forward the search buffer.
+                    shiftBuffer(search_buffer, character, search_buffer_size);
 
-                    // Pop one character from the lookahead_buffer
-                    lookahead_buffer.erase(lookahead_buffer.begin());
-
-                    // Pop one character from the lookahead_buffer
-                    lookahead_buffer.push_back(payload[cursor+lookahead_buffer_size]);
+                    // Shift forward the lookahead buffer.
+                    shiftBuffer(lookahead_buffer, payload[cursor+lookahead_buffer_size], lookahead_buffer_size);
 
                     break;
                 }
             }
         }
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+void
+LZ77::shiftBuffer( const std::vector<char>& buffer
+                 , char newEntry
+                 , uint32_t maxSize)
+{
+    try
+    {
+        if(buffer.size() == maxSize)
+        {
+            buffer.push_back(newEntry);
+        }
+        else
+        {
+            // Pop one character from the lookahead_buffer
+            buffer.erase(buffer.begin());
+
+            // Pop one character from the lookahead_buffer
+            buffer.push_back(newEntry);
+        }
+    }
+    catch(...)
+    {
+
     }
 }
 
