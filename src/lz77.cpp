@@ -23,6 +23,7 @@ LZ77::LZ77( uint32_t _search_buffer_size
     lookahead_buffer.insert( lookahead_buffer.begin()
                            , payload.begin()
                            , payload.begin()+lookahead_buffer_size);
+
 }
 
 
@@ -32,8 +33,6 @@ LZ77::encode()
 {
     // {0,0,""} 1: position, 2: length, 3: next character
     bool done = true;
-    size_t cursor = 0;
-
     while(done)
     {
         //char next_char = -1;
@@ -45,11 +44,8 @@ LZ77::encode()
             makeTuplesAndShift( 0
                               , 0
                               , first_char
-                              , std::vector<char>(first_char)
-                              , std::vector<char>(payload[cursor]));
-
-            // Increase cursor one position.
-            cursor++;
+                              , std::vector<char>({first_char})
+                              , std::vector<char>({payload[0]}));
         }
         else
         {
