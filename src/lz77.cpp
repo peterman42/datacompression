@@ -58,10 +58,16 @@ LZ77::encode()
             char character           = 0;
             std::vector<char> entriesLookaheadBuffer;
             std::vector<char> entriesSearchBuffer;
+            size_t cursorOfNext = search_buffer.size() + lookahead_buffer.size();
             while(true)
             {
                 character = lookahead_buffer[current_lookahead_index];
                 entriesSearchBuffer.push_back(character);
+
+                // Push into the temp buffer the character of payload.
+                entriesLookaheadBuffer.push_back(payload[cursorOfNext]);
+                cursorOfNext++;
+
                 auto itr = std::find(start_search_itr, end_search_itr, character);
                 if(itr != end_search_itr)
                 {
@@ -102,11 +108,6 @@ LZ77::encode()
 
                     break;                    
                 }
-
-                // Push into the temp buffer the character of payload.
-                entriesLookaheadBuffer.push_back(payload[cursor]);
-                // Increase cursor one position.
-                cursor++;
             }
         }
     }
