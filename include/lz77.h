@@ -6,6 +6,8 @@
 #include <map>
 #include <vector>
 
+namespace DataCompression { namespace LZ {
+
 class LZ77
 {
 public:
@@ -47,4 +49,6 @@ private :
     std::vector<char> search_buffer;
     std::vector<char> lookahead_buffer;
 };
+
+} }
 #endif // LZ77_H

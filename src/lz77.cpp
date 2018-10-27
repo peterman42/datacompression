@@ -3,6 +3,8 @@
 #include <tuple>
 #include <algorithm>
 
+namespace DataCompression { namespace LZ {
+
 LZ77::LZ77( uint32_t _search_buffer_size
           , uint32_t _lookahead_buffer_size
           , const std::string& _payload)
@@ -167,3 +169,5 @@ LZ77::decode()
 {
     return "";
 }
+
+}}
