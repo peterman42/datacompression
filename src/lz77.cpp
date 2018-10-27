@@ -116,18 +116,14 @@ LZ77::shiftBuffer( std::vector<char>& buffer
     bool status = true;
     try
     {
-        if(buffer.size() == maxSize)
-        {
-            buffer.push_back(newEntry);
-        }
-        else
+        if(buffer.size() > maxSize)
         {
             // Pop one character from the lookahead_buffer
             buffer.erase(buffer.begin());
-
-            // Pop one character from the lookahead_buffer
-            buffer.push_back(newEntry);
         }
+
+        // Push new char.
+        buffer.push_back(newEntry);
     }
     catch(...)
     {
