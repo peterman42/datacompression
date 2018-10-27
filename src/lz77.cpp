@@ -45,7 +45,8 @@ LZ77::encode()
             makeTuplesAndShift( 0
                               , 0
                               , first_char
-                              , payload[cursor]);
+                              , std::vector<char>(first_char)
+                              , std::vector<char>(payload[cursor]));
 
             // Increase cursor one position.
             cursor++;
@@ -59,9 +60,12 @@ LZ77::encode()
             auto start_search_itr    = search_buffer.begin();   // The start iterator.
             auto end_search_itr      = search_buffer.end();     // The end iterator.
             char character           = 0;
+            std::vector<char> entriesLookaheadBuffer;
+            std::vector<char> entriesSearchBuffer;
             while(true)
             {
                 character = lookahead_buffer[current_lookahead_index];
+                entriesSearchBuffer.push_back(character);
                 auto itr = std::find(start_search_itr, end_search_itr, character);
                 if(itr != end_search_itr)
                 {
@@ -71,7 +75,7 @@ LZ77::encode()
                         // Distance from the begining.
                         int32_t dist_from_beginning = std::distance(start_search_itr, itr);
                         // Distance from the end.
-                        position = search_buffer_size - dist_from_beginning;
+                        position = search_buffer.size() - dist_from_beginning;
                         found = true;
                     }
                     // Increase length.
@@ -97,11 +101,14 @@ LZ77::encode()
                     makeTuplesAndShift( position
                                       , length
                                       , character
-                                      , payload[cursor]);
+                                      , entriesSearchBuffer
+                                      , entriesLookaheadBuffer);
 
                     break;                    
                 }
 
+                // Push into the temp buffer the character of payload.
+                entriesLookaheadBuffer.push_back(payload[cursor]);
                 // Increase cursor one position.
                 cursor++;
             }
@@ -112,20 +119,40 @@ LZ77::encode()
 ///////////////////////////////////////////////////////////////////////////////
 bool
 LZ77::shiftBuffer( std::vector<char>& buffer
-                 , char newEntry
+                 , std::vector<char> newEntries
                  , uint32_t maxSize)
 {
     bool status = true;
     try
     {
-        if(buffer.size() > maxSize)
-        {
-            // Pop one character from the lookahead_buffer
-            buffer.erase(buffer.begin());
+        if(newEntries.size() == maxSize)
+        { // In case the newEntries size equals with the maxSize then clear the buffer
+          // and insert the elements that the newEntries holds.
+            buffer.clear();
+            buffer.insert(buffer.begin(), newEntries.begin(), newEntries.end());
         }
+        else if(newEntries.size() < maxSize)
+        {
 
-        // Push new char.
-        buffer.push_back(newEntry);
+            if(buffer.size() < maxSize)
+            {
+                // Pop as many characters as exist into the 'newEntries' vector
+                uint32_t size_removed = buffer.size() - newEntries.size();
+                buffer.erase(buffer.begin(), buffer.begin()+size_removed);
+            }
+            else if(buffer.size() == maxSize)
+            {
+                uint32_t size_removed = newEntries.size();
+                buffer.erase(buffer.begin(), buffer.begin()+size_removed);
+            }
+
+            // Push the chars of 'newEntries' on the back of buffer.
+            buffer.insert(buffer.end(), newEntries.begin(),newEntries.end());
+        }
+        else
+        {
+            throw ("The buffer cannot hold the new entries.");
+        }
     }
     catch(...)
     {
@@ -139,7 +166,8 @@ bool
 LZ77::makeTuplesAndShift( uint32_t position
                         , uint32_t length
                         , char nextChar
-                        , char nextCharInLookAheadBuffer)
+                        , std::vector<char> newCharsInSearchBuffer
+                        , std::vector<char> newCharsInLookAheadBuffer)
 {
     bool status = true;
     try
@@ -149,12 +177,12 @@ LZ77::makeTuplesAndShift( uint32_t position
         tuples.push_back(std::make_tuple(position, length, nextChar));
 
         // Shift forward the search buffer.
-        status = shiftBuffer(search_buffer, nextChar, search_buffer_size);
+        status = shiftBuffer(search_buffer, newCharsInSearchBuffer, search_buffer_size);
 
         if(!status) throw;
 
         // Shift forward the lookahead buffer.
-        status = shiftBuffer(lookahead_buffer, nextCharInLookAheadBuffer, lookahead_buffer_size);
+        status = shiftBuffer(lookahead_buffer, newCharsInLookAheadBuffer, lookahead_buffer_size);
     }
     catch(...)
     {
