@@ -131,10 +131,16 @@ LZ77::shiftBuffer( std::vector<char>& buffer
         else if(newEntries.size() < maxSize)
         {
 
-            if(buffer.size() < maxSize)
+            if((buffer.size() > 0) && (buffer.size() < maxSize))
             {
-                // Pop as many characters as exist into the 'newEntries' vector
-                uint32_t size_removed = buffer.size() - newEntries.size();
+
+                uint32_t size_removed = 1;
+                if(buffer.size() > 0)
+                {
+                    // Pop as many characters from buffer in order to insert the newEntries.
+                    size_removed = maxSize - newEntries.size();
+                }
+
                 buffer.erase(buffer.begin(), buffer.begin()+size_removed);
             }
             else if(buffer.size() == maxSize)
