@@ -120,9 +120,11 @@ LZ77::shiftBuffer( std::vector<char>& buffer
                  , uint32_t maxSize)
 {
     bool status = true;
+    size_t buffer_len = buffer.size();
+    size_t newEntries_len = newEntries.size();
     try
     {
-        if(newEntries.size() == maxSize)
+        if(newEntries_len == maxSize)
         { // In case the newEntries size equals with the maxSize then clear the buffer
           // and insert the elements that the newEntries holds.
             buffer.clear();
@@ -131,21 +133,23 @@ LZ77::shiftBuffer( std::vector<char>& buffer
         else if(newEntries.size() < maxSize)
         {
 
-            if((buffer.size() > 0) && (buffer.size() < maxSize))
+            if((buffer_len > 0)
+                    && (buffer_len < maxSize))
             {
-
-                uint32_t size_removed = 1;
-                if(buffer.size() > 0)
+                if(newEntries_len > (maxSize - buffer_len))
                 {
-                    // Pop as many characters from buffer in order to insert the newEntries.
-                    size_removed = maxSize - newEntries.size();
+                    uint32_t size_removed = 1;
+                    if(buffer_len > 0)
+                    {
+                        // Pop as many characters from buffer in order to insert the newEntries.
+                        size_removed = maxSize - newEntries_len;
+                    }
+                    buffer.erase(buffer.begin(), buffer.begin()+size_removed);
                 }
-
-                buffer.erase(buffer.begin(), buffer.begin()+size_removed);
             }
-            else if(buffer.size() == maxSize)
+            else if(buffer_len == maxSize)
             {
-                uint32_t size_removed = newEntries.size();
+                uint32_t size_removed = newEntries_len;
                 buffer.erase(buffer.begin(), buffer.begin()+size_removed);
             }
 
