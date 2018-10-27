@@ -116,7 +116,7 @@ LZ77::encode()
 ///////////////////////////////////////////////////////////////////////////////
 bool
 LZ77::shiftBuffer( std::vector<char>& buffer
-                 , std::vector<char> newEntries
+                 , const std::vector<char>& newEntries
                  , uint32_t maxSize)
 {
     bool status = true;
@@ -173,8 +173,8 @@ bool
 LZ77::makeTuplesAndShift( uint32_t position
                         , uint32_t length
                         , char nextChar
-                        , std::vector<char> newCharsInSearchBuffer
-                        , std::vector<char> newCharsInLookAheadBuffer)
+                        , const std::vector<char>& newCharsInSearchBuffer
+                        , const std::vector<char>& newCharsInLookAheadBuffer)
 {
     bool status = true;
     try

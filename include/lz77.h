@@ -33,15 +33,15 @@ private :
 
     ///////////////////////////////////////////////////////////////////////////////
     bool shiftBuffer( std::vector<char>& buffer
-                    , std::vector<char> newEntries
+                    , const std::vector<char>& newEntries
                     , uint32_t maxSize);
 
     ///////////////////////////////////////////////////////////////////////////////
     bool makeTuplesAndShift( uint32_t position
                            , uint32_t length
                            , char nextChar
-                           , std::vector<char> newCharsInSearchBuffer
-                           , std::vector<char> newCharsInLookAheadBuffer);
+                           , const std::vector<char>& newCharsInSearchBuffer
+                           , const std::vector<char>& newCharsInLookAheadBuffer);
 
     uint32_t search_buffer_size;
     uint32_t lookahead_buffer_size;
