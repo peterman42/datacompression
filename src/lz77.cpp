@@ -14,8 +14,8 @@ LZ77::LZ77( uint32_t _search_buffer_size
     , lookahead_buffer()
 
 {
-    search_buffer.resize(_search_buffer_size);
-    lookahead_buffer.resize(lookahead_buffer_size);
+    search_buffer.reserve(_search_buffer_size);
+    lookahead_buffer.reserve(lookahead_buffer_size);
 
     // Initialize the lookahead buffer.
     lookahead_buffer.insert( lookahead_buffer.begin()
