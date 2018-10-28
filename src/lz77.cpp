@@ -62,10 +62,17 @@ LZ77::encode()
             while(true)
             {
                 character = lookahead_buffer[current_lookahead_index];
-                entriesSearchBuffer.push_back(character);
+
+                // Push into the temp buffer the character of lookahead buffer.
+                shiftBuffer( entriesSearchBuffer
+                           , std::vector<char>({character})
+                           , search_buffer_size);
 
                 // Push into the temp buffer the character of payload.
-                entriesLookaheadBuffer.push_back(payload[cursorOfNext]);
+                shiftBuffer( entriesLookaheadBuffer
+                           , std::vector<char>({payload[cursorOfNext]})
+                           , lookahead_buffer_size);
+
                 cursorOfNext++;
 
                 auto itr = std::find(start_search_itr, end_search_itr, character);
@@ -88,13 +95,14 @@ LZ77::encode()
 
                     if(start_search_itr == search_buffer.end()-1)
                     {
-
+                        //start_search_itr = search_buffer.begin();
                     }
                     else
                     {
                         start_search_itr++;                    // Increase the start iterator to the next.
                         end_search_itr = start_search_itr + 1; // Assigning the end iterator equals to the next of the start iterator.
                     }
+
                 }
                 else
                 {
