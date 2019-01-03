@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 2.6)
+project(Huffman)
+FILE(GLOB_RECURSE INC_ALL "include/*.h")
+set(HEADERS include /usr/local/include /usr/include)
+set(SOURCES src/main.cpp )
+include_directories(${HEADERS})
+add_executable(Huffman ${SOURCES} ${INC_ALL})
+link_directories(Huffman /usr/lib/x86_64-linux-gnu)
+target_link_libraries(Huffman pthread rt)
+target_compile_options(Huffman PUBLIC -std=c++17 -g -Wall -pedantic -Wextra -fpermissive)
+install(TARGETS Huffman DESTINATION build)
+
