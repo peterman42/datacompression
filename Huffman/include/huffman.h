@@ -11,8 +11,10 @@ using count_character = std::pair<char, uint32_t>;
 class Huffman
 {
 public:
-    void encode();
-    voide decode();
+    ///////////////////////////////////////////////////////////////////////////////
+    void encode(const std::string& text);
+    ///////////////////////////////////////////////////////////////////////////////
+    void decode(const std::string& text);
 private:
     std::list<count_character> countCharacters (const std::string& text);
 

@@ -1,1 +1,14 @@
 #include <huffman.h>
+namespace DataCompression { namespace Huffman {
+
+///////////////////////////////////////////////////////////////////////////////
+void Huffman::encode(const std::string& text)
+{
+}
+
+///////////////////////////////////////////////////////////////////////////////
+void Huffman::decode(const std::string& text)
+{
+
+}
+void Huffman::encode(const std::string& text)
