@@ -5,17 +5,17 @@
 
 namespace DataCompression { namespace Huffman {
 
-class Btree
+class BTree
 {
 public:
     std::shared_ptr<Node> root;
 
     ///////////////////////////////////////////////////////////////////////////////
-    ~Btree() = default;
-    Btree(const Btree& T) = default;
-    Btree& operator=(const Btree& T) = default;
-    Btree(Btree&& T) = default;
-    Btree& operator=(Btree&& T) = default;
+    ~BTree() = default;
+    BTree(const BTree& T) = default;
+    BTree& operator=(const BTree& T) = default;
+    BTree(BTree&& T) = default;
+    BTree& operator=(BTree&& T) = default;
 };
 } }
 #endif
