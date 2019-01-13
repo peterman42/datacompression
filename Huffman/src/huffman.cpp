@@ -53,3 +53,10 @@ std::list<count_character> Huffman::countCharacters (const std::string& text)
 
     return list_of_characters;
 }
+
+///////////////////////////////////////////////////////////////////////////////
+void Huffman::sortBuffer(std::list<count_character>&  buffer)
+{
+
+}
+}}
