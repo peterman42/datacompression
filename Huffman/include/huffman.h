@@ -3,6 +3,7 @@
 
 #include <list>
 #include <string>
+#include <btree.h>
 
 namespace DataCompression { namespace Huffman {
 
@@ -16,6 +17,9 @@ public:
     ///////////////////////////////////////////////////////////////////////////////
     void decode(const std::string& text);
 private:
+
+    BTree binary_tree;
+
     std::list<count_character> countCharacters (const std::string& text);
 
     ///////////////////////////////////////////////////////////////////////////////
