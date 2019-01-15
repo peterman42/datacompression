@@ -43,7 +43,7 @@ std::list<count_character> Huffman::countCharacters (const std::string& text)
             }
             else
             {
-                auto new_pair = std::make_pair<char, uint32_t>('h', 0);
+				auto new_pair = std::make_pair(character, 0);
                 list_of_characters.push_back(new_pair);
             }
         }
