@@ -3,5 +3,9 @@
 *.obj
 *.pdb
 *.filters
+*.log
+*.idb
+*.tlog
 vs2015/bin/*
 vs2015/.vs/*
+vs2015/x64/*
