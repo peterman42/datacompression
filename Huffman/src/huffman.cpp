@@ -57,6 +57,11 @@ std::list<count_character> Huffman::countCharacters (const std::string& text)
 ///////////////////////////////////////////////////////////////////////////////
 void Huffman::sortBuffer(std::list<count_character>&  buffer)
 {
-
+	std::sort( buffer.begin()
+			 , buffer.end()
+			 , [](const count_character& a, const count_character& b)
+	{
+		return (a.second < b.second);
+	});
 }
 }}
