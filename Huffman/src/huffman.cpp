@@ -1,13 +1,27 @@
 #include <huffman.h>
 #include <algorithm>
+#include "exceptions/priority_queue_exception.h"
 
 namespace DataCompression { namespace Huffman {
 
 ///////////////////////////////////////////////////////////////////////////////
 void Huffman::encode(const std::string& text)
 {
-    auto min_heap = countCharacters(text);
 
+    auto priority_queue = countCharacters(text);
+    sortBufferAsc(priority_queue);
+
+    // Merge the nodes into the priority queue.
+    while(priority_queue.size() != 1)
+    {
+        mergeNodesWithLessProbabilities(priority_queue);
+        sortBufferAsc(priority_queue);
+    }
+
+    if(priority_queue.size() != 1)
+        throw PriorityQueueException("The priority queue should contain one node.");
+
+    binary_tree.add(priority_queue.front());
 
 }
 
