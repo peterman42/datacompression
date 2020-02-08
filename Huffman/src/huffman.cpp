@@ -28,13 +28,9 @@ std::list<count_character> Huffman::countCharacters (const std::string& text)
                                       , [&character](const count_character& V)
             {
                 if(V.character == character)
-                {
                     return true;
-                }
                 else
-                {
                    return false;
-                }
             });
 
             if(exists_it != list_of_characters.end())
