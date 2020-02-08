@@ -1,7 +1,12 @@
 #include <btree.h>
 
+namespace DataCompression { namespace Huffman {
+
+
 ///////////////////////////////////////////////////////////////////////////////
 void BTree::add(const Node& node)
 {
 
 }
+
+}}
