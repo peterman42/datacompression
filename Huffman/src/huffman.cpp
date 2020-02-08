@@ -61,4 +61,10 @@ void Huffman::sortBufferAsc(std::list<Node>& priority_queue)
     });
 }
 
+///////////////////////////////////////////////////////////////////////////////
+void Huffman::mergeNodesWithLessProbabilities(std::list<Node>& priority_queue)
+{
+
+}
+
 }}
