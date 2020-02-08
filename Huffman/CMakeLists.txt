@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.6)
 project(Huffman)
 FILE(GLOB_RECURSE INC_ALL "include/*.h")
-set(HEADERS include /usr/local/include /usr/include)
+set(HEADERS include /usr/local/include /usr/include ../3rd_party/catch2)
 set(SOURCES src/main.cpp src/btree.cpp src/node.cpp src/huffman.cpp)
 include_directories(${HEADERS})
 add_executable(Huffman ${SOURCES} ${INC_ALL})
