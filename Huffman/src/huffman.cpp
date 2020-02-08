@@ -8,7 +8,6 @@ void Huffman::encode(const std::string& text)
 {
     auto min_heap = countCharacters(text);
 
-    sortBuffer(min_heap);
 
 }
 
@@ -54,11 +53,12 @@ std::list<Node> Huffman::countCharacters (const std::string& text)
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-void Huffman::sortBuffer(std::list<Node>&  buffer)
+void Huffman::sortBufferAsc(std::list<Node>& priority_queue)
 {
-    buffer.sort([](const Node& nodeA, const Node& nodeB)
+    priority_queue.sort([](const Node& nodeA, const Node& nodeB)
     {
         return nodeA.value < nodeB.value;
     });
 }
+
 }}
