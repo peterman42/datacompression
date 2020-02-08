@@ -7,7 +7,21 @@
 
 namespace DataCompression { namespace Huffman {
 
-using count_character = std::pair<char, uint32_t>;
+struct count_character
+{
+    char character;
+    uint32_t num;
+
+    count_character(const char& _character, uint32_t _num)
+        : character(_character)
+        , num(_num)
+    {}
+
+    bool operator<(const count_character& c) const
+    {
+        return num < c.num;
+    }
+};
 
 class Huffman
 {

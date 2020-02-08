@@ -27,7 +27,7 @@ std::list<count_character> Huffman::countCharacters (const std::string& text)
                                       , list_of_characters.end()
                                       , [&character](const count_character& V)
             {
-                if(std::get<0>(V) == character)
+                if(V.character == character)
                 {
                     return true;
                 }
@@ -39,12 +39,11 @@ std::list<count_character> Huffman::countCharacters (const std::string& text)
 
             if(exists_it != list_of_characters.end())
             {
-                (exists_it->second)++;
+                (exists_it->num)++;
             }
             else
             {
-				auto new_pair = std::make_pair(character, 0);
-                list_of_characters.push_back(new_pair);
+                list_of_characters.push_back(count_character(character, 0));
             }
         }
     }
@@ -57,11 +56,6 @@ std::list<count_character> Huffman::countCharacters (const std::string& text)
 ///////////////////////////////////////////////////////////////////////////////
 void Huffman::sortBuffer(std::list<count_character>&  buffer)
 {
-	std::sort( buffer.begin()
-			 , buffer.end()
-			 , [](const count_character& a, const count_character& b)
-	{
-		return (a.second < b.second);
-	});
+    buffer.sort();
 }
 }}
