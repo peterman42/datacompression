@@ -7,22 +7,6 @@
 
 namespace DataCompression { namespace Huffman {
 
-struct count_character
-{
-    char character;
-    uint32_t num;
-
-    count_character(const char& _character, uint32_t _num)
-        : character(_character)
-        , num(_num)
-    {}
-
-    bool operator<(const count_character& c) const
-    {
-        return num < c.num;
-    }
-};
-
 class Huffman
 {
 public:
@@ -35,9 +19,9 @@ private:
     BTree binary_tree;
 
     ///////////////////////////////////////////////////////////////////////////////
-    std::list<count_character> countCharacters (const std::string& text);
+    std::list<Node> countCharacters (const std::string& text);
     ///////////////////////////////////////////////////////////////////////////////
-    void sortBuffer(std::list<count_character>&  buffer);
+    void sortBuffer(std::list<Node>&  buffer);
 
     ///////////////////////////////////////////////////////////////////////////////
     ~Huffman() = default;

@@ -6,6 +6,10 @@ namespace DataCompression { namespace Huffman {
 ///////////////////////////////////////////////////////////////////////////////
 void Huffman::encode(const std::string& text)
 {
+    auto min_heap = countCharacters(text);
+
+    sortBuffer(min_heap);
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15,9 +19,9 @@ void Huffman::decode(const std::string& text)
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-std::list<count_character> Huffman::countCharacters (const std::string& text)
+std::list<Node> Huffman::countCharacters (const std::string& text)
 {
-    std::list <count_character> list_of_characters;
+    std::list <Node> list_of_characters;
     try
     {
         for(const char& character : text)
@@ -25,9 +29,9 @@ std::list<count_character> Huffman::countCharacters (const std::string& text)
 
             auto exists_it = std::find_if(list_of_characters.begin()
                                       , list_of_characters.end()
-                                      , [&character](const count_character& V)
+                                      , [&character](const Node& V)
             {
-                if(V.character == character)
+                if(V.label == character)
                     return true;
                 else
                    return false;
@@ -35,11 +39,11 @@ std::list<count_character> Huffman::countCharacters (const std::string& text)
 
             if(exists_it != list_of_characters.end())
             {
-                (exists_it->num)++;
+                (exists_it->value)++;
             }
             else
             {
-                list_of_characters.push_back(count_character(character, 0));
+                list_of_characters.push_back(Node(character, 0));
             }
         }
     }
@@ -50,8 +54,11 @@ std::list<count_character> Huffman::countCharacters (const std::string& text)
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-void Huffman::sortBuffer(std::list<count_character>&  buffer)
+void Huffman::sortBuffer(std::list<Node>&  buffer)
 {
-    buffer.sort();
+    buffer.sort([](const Node& nodeA, const Node& nodeB)
+    {
+        return nodeA.value < nodeB.value;
+    });
 }
 }}
