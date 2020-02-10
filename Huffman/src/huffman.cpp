@@ -16,6 +16,8 @@ void Huffman::encode(const std::string& text)
     {
         // Pick the top 2 nodes and merge them.
         mergeNodesWithLessProbability(priority_queue);
+
+        // Sort the buffer again.
         sortBufferAsc(priority_queue);
     }
 
@@ -79,7 +81,15 @@ void Huffman::sortBufferAsc(std::list<Node>& priority_queue)
 ///////////////////////////////////////////////////////////////////////////////
 void Huffman::mergeNodesWithLessProbability(std::list<Node>& priority_queue)
 {
-
+        auto first_node = priority_queue.front();
+        priority_queue.pop_front();
+        auto second_node = priority_queue.front();
+        priority_queue.pop_front();
+        auto new_node = Node( std::make_shared<Node>(first_node)
+                            , std::make_shared<Node>(second_node)
+                            , ''
+                            , first_node + second_node);
+        priority_queue.push_front(new_node);
 }
 
 }}
