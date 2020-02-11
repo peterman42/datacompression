@@ -25,8 +25,10 @@ Node::Node( std::shared_ptr<Node> _right
 ///////////////////////////////////////////////////////////////////////////////
 Node::Node( char _label
           , uint32_t _value)
-    : value(_value)
+    : right(nullptr)
+    , left(nullptr)
     , label(_label)
+    , value(_value)
 {}
 
 }}
