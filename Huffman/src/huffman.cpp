@@ -54,13 +54,9 @@ std::list<Node> Huffman::countCharacters (const std::string& text)
             });
 
             if(exists_it != list_of_characters.end())
-            {
                 (exists_it->value)++;
-            }
             else
-            {
                 list_of_characters.push_back(Node(character, 0));
-            }
         }
     }
     catch(...)
@@ -87,8 +83,7 @@ void Huffman::mergeNodesWithLessProbability(std::list<Node>& priority_queue)
         priority_queue.pop_front();
         auto new_node = Node( std::make_shared<Node>(first_node)
                             , std::make_shared<Node>(second_node)
-                            , ''
-                            , first_node + second_node);
+                            , first_node.value + second_node.value);
         priority_queue.push_front(new_node);
 }
 
