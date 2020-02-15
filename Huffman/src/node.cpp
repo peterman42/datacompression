@@ -11,6 +11,7 @@ Node::Node( std::shared_ptr<Node> _left
     , right(_right)
     , label(_label)
     , value(_value)
+    , weight(0)
 {}
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20,6 +21,7 @@ Node::Node( std::shared_ptr<Node> _left
     : left(_left)
     , right(_right)
     , value(_value)
+    , weight(0)
 {}
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -29,6 +31,8 @@ Node::Node( char _label
     , right(nullptr)
     , label(_label)
     , value(_value)
+    , weight(0)
 {}
+
 
 }}

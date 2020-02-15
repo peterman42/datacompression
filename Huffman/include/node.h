@@ -1,6 +1,7 @@
 #ifndef NODE_H
 #define NODE_H
 #include <memory>
+#include <bitset>
 
 namespace DataCompression { namespace Huffman {
 
@@ -11,6 +12,7 @@ public:
     std::shared_ptr<Node> right;
     char label;
     uint32_t value;
+    std::bitset<1> weight;
 
     ///////////////////////////////////////////////////////////////////////////////
     Node( std::shared_ptr<Node> _left
