@@ -22,6 +22,7 @@ public:
 private:
 
     BTree binary_tree;
+    std::map<char, huffman_code> codes;
 
     ///////////////////////////////////////////////////////////////////////////////
     std::list<Node> countCharacters (const std::string& text);
