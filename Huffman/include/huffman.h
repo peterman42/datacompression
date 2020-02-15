@@ -4,8 +4,13 @@
 #include <list>
 #include <string>
 #include <btree.h>
+#include <bitset>
+#include <map>
+#include <vector>
 
 namespace DataCompression { namespace Huffman {
+
+using huffman_code = std::vector<std::bitset<1>>;
 
 class Huffman
 {
