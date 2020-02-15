@@ -34,5 +34,20 @@ Node::Node( char _label
     , weight(0)
 {}
 
+///////////////////////////////////////////////////////////////////////////////
+void Node::traverse()
+{
+    if(left != nullptr)
+    {
+        left->weight = 0;
+        left->traverse();
+    }
+
+    if(right != nullptr)
+    {
+        right->weight = 1;
+        right->traverse();
+    }
+}
 
 }}

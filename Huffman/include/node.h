@@ -29,6 +29,9 @@ public:
     Node( char _label
         , uint32_t _value);
 
+    ///////////////////////////////////////////////////////////////////////////////
+    void traverse();
+
     ~Node() = default;
     Node(const Node& T) = default;
     Node& operator=(const Node& T) = default;
