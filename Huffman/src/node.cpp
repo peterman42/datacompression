@@ -12,6 +12,7 @@ Node::Node( std::shared_ptr<Node> _left
     , label(_label)
     , value(_value)
     , weight(0)
+    , code()
 {}
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -22,6 +23,7 @@ Node::Node( std::shared_ptr<Node> _left
     , right(_right)
     , value(_value)
     , weight(0)
+    , code()
 {}
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -32,6 +34,7 @@ Node::Node( char _label
     , label(_label)
     , value(_value)
     , weight(0)
+    , code()
 {}
 
 ///////////////////////////////////////////////////////////////////////////////
