@@ -27,10 +27,10 @@ public:
     Huffman(Huffman&& T) = default;
     Huffman& operator=(Huffman&& T) = default;
 
-private:
-
     BTree binary_tree;
     std::map<char, huffman_code> codes;
+
+private:
 
     ///////////////////////////////////////////////////////////////////////////////
     void mergeNodesWithLessProbability(std::list<Node>& priority_queue);
