@@ -7,7 +7,7 @@
 
 namespace DataCompression { namespace Huffman {
 
-class Node;
+class Node; // forward declaration
 using huffman_code = std::vector<std::bitset<1>>;
 
 ///////////////////////////////////////////////////////////////////////////////
