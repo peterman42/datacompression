@@ -2,6 +2,9 @@
 
 namespace DataCompression { namespace Huffman {
 
+BTree::BTree()
+    : root(nullptr)
+{}
 
 ///////////////////////////////////////////////////////////////////////////////
 void BTree::add(const Node& node)

@@ -8,6 +8,9 @@ namespace DataCompression { namespace Huffman {
 class BTree
 {
 public:
+
+    BTree();
+
     std::shared_ptr<Node> root;
 
     ///////////////////////////////////////////////////////////////////////////////
