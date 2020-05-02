@@ -34,4 +34,13 @@ std::list<Node> countCharacters (const std::string& text)
     return list_of_characters;
 }
 
+///////////////////////////////////////////////////////////////////////////////
+void sortBufferAsc(std::list<Node>& priority_queue)
+{
+    priority_queue.sort([](const Node& nodeA, const Node& nodeB)
+    {
+        return nodeA.value < nodeB.value;
+    });
+}
+
 }}
