@@ -1,6 +1,7 @@
 #include <huffman.h>
 #include <algorithm>
 #include "exceptions/priority_queue_exception.h"
+#include "exceptions/huffman_tree_exception.h"
 
 namespace DataCompression { namespace Huffman {
 
@@ -32,6 +33,13 @@ void Huffman::encode(const std::string& text)
 void Huffman::decode(const std::string& text)
 {
 
+}
+
+///////////////////////////////////////////////////////////////////////////////
+huffman_code_map Huffman::buildCodesMap()
+{
+    auto root = binary_tree.root;
+    if(!root) throw HuffmanTreeException(MESSAGE_HUFFMAN_TREE_DOES_NOT_EXIST);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
