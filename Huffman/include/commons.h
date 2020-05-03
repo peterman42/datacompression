@@ -5,6 +5,9 @@
 #include <vector>
 #include <list>
 
+#define MESSAGE_HUFFMAN_TREE_DOES_NOT_EXIST "Huffman Tress does not exist."
+#define MESSAGE_PRIORITY_QUEUE_DOES_NOT_CONTAIN "The priority queue should contain one node."
+
 namespace DataCompression { namespace Huffman {
 
 class Node; // forward declaration

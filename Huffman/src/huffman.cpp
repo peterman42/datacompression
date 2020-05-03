@@ -22,7 +22,7 @@ void Huffman::encode(const std::string& text)
     }
 
     if(priority_queue.size() != 1)
-        throw PriorityQueueException("The priority queue should contain one node.");
+        throw PriorityQueueException(MESSAGE_PRIORITY_QUEUE_DOES_NOT_CONTAIN);
 
     binary_tree.add(priority_queue.front());
 
