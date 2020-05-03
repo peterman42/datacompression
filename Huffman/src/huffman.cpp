@@ -2,15 +2,9 @@
 #include <algorithm>
 #include "exceptions/priority_queue_exception.h"
 #include "exceptions/huffman_tree_exception.h"
+#include "huffman_codes.h"
 
 namespace DataCompression { namespace Huffman {
-
-///////////////////////////////////////////////////////////////////////////////
-Huffman::Huffman()
-    : codes(nullptr)
-{
-    codes = std::make_unique<huffman_code_map>();
-}
 
 ///////////////////////////////////////////////////////////////////////////////
 void Huffman::encode(const std::string& text)
@@ -52,9 +46,9 @@ const huffman_code_map& Huffman::buildCodesMap()
     // During the traverse the codes/weights are set for each node.
     binary_tree.traverse();
 
-    binary_tree.root->appendBitToNode();
+    binary_tree.root->appendBitToNode(huffman_code());
 
-    return *codes;
+    return *HuffmanCodes::instance().codes;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

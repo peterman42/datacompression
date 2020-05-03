@@ -12,8 +12,6 @@ class Huffman
 {
 public:
 
-    Huffman();
-
     ///////////////////////////////////////////////////////////////////////////////
     void encode(const std::string& text);
     ///////////////////////////////////////////////////////////////////////////////
@@ -21,7 +19,7 @@ public:
     ///////////////////////////////////////////////////////////////////////////////
     const huffman_code_map& buildCodesMap();
 
-    ///////////////////////////////////////////////////////////////////////////////
+    Huffman() = default;
     ~Huffman() = default;
     Huffman(const Huffman& T) = default;
     Huffman& operator=(const Huffman& T) = default;
@@ -29,7 +27,6 @@ public:
     Huffman& operator=(Huffman&& T) = default;
 
     BTree binary_tree;
-    huffman_code_map_ptr codes;
 
 private:
 
