@@ -21,6 +21,7 @@ Node::Node( std::shared_ptr<Node> _left
           , uint32_t _value)
     : left(_left)
     , right(_right)
+    , label(NULL)
     , value(_value)
     , weight(0)
     , code()
