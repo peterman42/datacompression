@@ -8,7 +8,8 @@ set(SOURCES src/btree.cpp
             src/commons.cpp
             tests/commons_tests.cpp
             tests/huffman_tests.cpp
-            tests/huffman_all_tests.cpp)
+            tests/huffman_all_tests.cpp
+            tests/node_tests.cpp)
 include_directories(${HEADERS})
 add_executable(Huffman ${SOURCES} ${INC_ALL})
 link_directories(Huffman /usr/lib/x86_64-linux-gnu)
@@ -16,5 +17,6 @@ target_link_libraries(Huffman pthread rt gtest_main gtest)
 target_compile_options(Huffman PUBLIC -std=c++17 -g -Wall -pedantic -Wextra -fpermissive)
 add_test(NAME Commons COMMAND Huffman)
 add_test(NAME Huffman COMMAND Huffman)
+add_test(NAME Node COMMAND Huffman)
 install(TARGETS Huffman DESTINATION build)
 
