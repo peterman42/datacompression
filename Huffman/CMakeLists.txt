@@ -6,6 +6,7 @@ set(SOURCES src/btree.cpp
             src/node.cpp
             src/huffman.cpp
             src/commons.cpp
+            src/huffman_codes.cpp
             tests/commons_tests.cpp
             tests/huffman_tests.cpp
             tests/huffman_all_tests.cpp
