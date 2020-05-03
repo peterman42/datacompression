@@ -5,6 +5,7 @@
 #include <vector>
 #include <list>
 #include <map>
+#include <memory>
 
 #define MESSAGE_HUFFMAN_TREE_DOES_NOT_EXIST "Huffman Tress does not exist."
 #define MESSAGE_PRIORITY_QUEUE_DOES_NOT_CONTAIN "The priority queue should contain one node."
@@ -15,6 +16,7 @@ class Node; // forward declaration
 using bit = std::bitset<1>;
 using huffman_code = std::vector<bit>;
 using huffman_code_map = std::map<char, huffman_code>;
+using huffman_code_map_ptr = std::unique_ptr<huffman_code_map>;
 
 ///////////////////////////////////////////////////////////////////////////////
 std::list<Node> countCharacters (const std::string& text);

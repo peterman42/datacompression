@@ -29,7 +29,7 @@ public:
     Huffman& operator=(Huffman&& T) = default;
 
     BTree binary_tree;
-    huffman_code_map codes;
+    huffman_code_map_ptr codes;
 
 private:
 
