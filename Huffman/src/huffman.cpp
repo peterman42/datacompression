@@ -43,10 +43,18 @@ void Huffman::decode(const std::string& text)
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-huffman_code_map Huffman::buildCodesMap()
+const huffman_code_map& Huffman::buildCodesMap()
 {
-    auto root = binary_tree.root;
-    if(!root) throw HuffmanTreeException(MESSAGE_HUFFMAN_TREE_DOES_NOT_EXIST);
+    if(!binary_tree.root)
+        throw HuffmanTreeException(MESSAGE_HUFFMAN_TREE_DOES_NOT_EXIST);
+
+    // Make a depth-first traverse.
+    // During the traverse the codes/weights are set for each node.
+    binary_tree.traverse();
+
+    binary_tree.root->appendBitToNode();
+
+    return *codes;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

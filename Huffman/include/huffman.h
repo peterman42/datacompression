@@ -5,7 +5,6 @@
 #include <string>
 #include <btree.h>
 #include "commons.h"
-#include <map>
 
 namespace DataCompression { namespace Huffman {
 
@@ -13,14 +12,15 @@ class Huffman
 {
 public:
 
-    Huffman() = default;
+    Huffman();
 
     ///////////////////////////////////////////////////////////////////////////////
     void encode(const std::string& text);
     ///////////////////////////////////////////////////////////////////////////////
     void decode(const std::string& text);
     ///////////////////////////////////////////////////////////////////////////////
-    huffman_code_map buildCodesMap();
+    const huffman_code_map& buildCodesMap();
+
     ///////////////////////////////////////////////////////////////////////////////
     ~Huffman() = default;
     Huffman(const Huffman& T) = default;
