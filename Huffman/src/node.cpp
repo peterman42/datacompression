@@ -73,12 +73,7 @@ void Node::appendBitToNode(const huffman_code& appended_code)
     }
 
     if(!left) left->appendBitToNode(appended_code);
-
-    if(!right)
-    {
-        auto temp = appended_code;
-        right->appendBitToNode(temp);
-    }
+    if(!right)right->appendBitToNode(huffman_code(appended_code));
 }
 
 }}
