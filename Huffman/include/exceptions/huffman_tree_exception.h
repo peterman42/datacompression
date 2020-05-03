@@ -5,11 +5,11 @@
 
 namespace DataCompression { namespace Huffman {
 
-class HuffmanTreeException : public std::runtime_exception
+class HuffmanTreeException : public std::runtime_error
 {
 public :
     HuffmanTreeException(const std::string& what)
-        : std::runtime_exception(what)
+        : std::runtime_error(what)
     {}
 };
 
