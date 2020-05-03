@@ -1,4 +1,5 @@
 #include <node.h>
+#include "huffman_codes.h"
 
 namespace DataCompression { namespace Huffman {
 
@@ -67,6 +68,7 @@ void Node::appendBitToNode(const huffman_code& appended_code)
     if(isLeaf())
     {
         code = appended_code;
+        HuffmanCodes::instance().codes->insert(std::pair<char,huffman_code>(label,code));
         return;
     }
 
