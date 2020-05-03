@@ -28,7 +28,7 @@ public:
     Huffman& operator=(Huffman&& T) = default;
 
     BTree binary_tree;
-    std::map<char, huffman_code> codes;
+    huffman_code_map codes;
 
 private:
 

@@ -12,6 +12,7 @@ namespace DataCompression { namespace Huffman {
 
 class Node; // forward declaration
 using huffman_code = std::vector<std::bitset<1>>;
+using huffman_code_map = std::map<char, huffman_code>;
 
 ///////////////////////////////////////////////////////////////////////////////
 std::list<Node> countCharacters (const std::string& text);
