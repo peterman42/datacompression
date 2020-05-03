@@ -13,7 +13,7 @@ public:
     std::shared_ptr<Node> right;
     char label;
     uint32_t value;
-    std::bitset<1> weight;
+    bit weight;
     huffman_code code;
 
     ///////////////////////////////////////////////////////////////////////////////
