@@ -62,7 +62,7 @@ bool Node::isLeaf()
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-void Node::appendBitToNode(const huffman_code& appended_code)
+void Node::createHuffmanCodeForLeafs(const huffman_code& appended_code)
 {
     appended_code.push_back(weight);
     if(isLeaf())
@@ -72,8 +72,8 @@ void Node::appendBitToNode(const huffman_code& appended_code)
         return;
     }
 
-    if(!left) left->appendBitToNode(appended_code);
-    if(!right)right->appendBitToNode(huffman_code(appended_code));
+    if(!left) left->createHuffmanCodeForLeafs(appended_code);
+    if(!right) right->createHuffmanCodeForLeafs(appended_code);
 }
 
 }}

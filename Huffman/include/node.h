@@ -38,7 +38,7 @@ public:
     bool isLeaf();
 
     ///////////////////////////////////////////////////////////////////////////////
-    void appendBitToNode(const huffman_code& );
+    void createHuffmanCodeForLeafs(const huffman_code& );
 
     ~Node() = default;
     Node(const Node& T) = default;
