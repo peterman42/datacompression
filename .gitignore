@@ -12,3 +12,4 @@ vs2015/.vs/*
 vs2015/x64/*
 build/
 vs2015/packages/*
+x64/

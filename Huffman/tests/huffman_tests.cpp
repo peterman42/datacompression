@@ -1,4 +1,4 @@
-#include <gtest/gtest.h>
+#include "gtest/gtest.h"
 #include "huffman.h"
 
 using namespace DataCompression::Huffman;
