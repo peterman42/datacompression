@@ -20,43 +20,48 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Huffman\include\btree.h" />
+    <ClInclude Include="..\..\Huffman\include\commons.h" />
+    <ClInclude Include="..\..\Huffman\include\exceptions\huffman_tree_exception.h" />
+    <ClInclude Include="..\..\Huffman\include\exceptions\priority_queue_exception.h" />
     <ClInclude Include="..\..\Huffman\include\huffman.h" />
+    <ClInclude Include="..\..\Huffman\include\huffman_codes.h" />
     <ClInclude Include="..\..\Huffman\include\node.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Huffman\src\btree.cpp" />
+    <ClCompile Include="..\..\Huffman\src\commons.cpp" />
     <ClCompile Include="..\..\Huffman\src\huffman.cpp" />
-    <ClCompile Include="..\..\Huffman\src\main.cpp" />
+    <ClCompile Include="..\..\Huffman\src\huffman_codes.cpp" />
     <ClCompile Include="..\..\Huffman\src\node.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{984A9EE5-4422-44AE-9B33-E463648CFF0F}</ProjectGuid>
     <RootNamespace>huffman</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
