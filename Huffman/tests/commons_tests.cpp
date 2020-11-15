@@ -12,7 +12,7 @@ TEST(Commons, countCharacters) {
                              , Node('h',1)
                              , Node('i',2)
                              , Node('s',3)
-                             , Node("''" ,4)
+                             , Node('\t' ,4)
                              , Node('a',1)
                              , Node('t',2)
                              , Node('e',2)
@@ -32,7 +32,7 @@ TEST(Commons, sortBufferAsc)
                              , Node('h',1)
                              , Node('i',2)
                              , Node('s',3)
-                             , Node("''" ,4)
+                             , Node('\t' ,4)
                              , Node('a',1)
                              , Node('t',2)
                              , Node('e',2)
@@ -45,7 +45,7 @@ TEST(Commons, sortBufferAsc)
                              , Node('t',2)
                              , Node('e',2)
                              , Node('s',3)
-                             , Node("''" ,4)});
+                             , Node('\t' ,4)});
 
     // When
     sortBufferAsc(given);
