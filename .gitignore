@@ -6,7 +6,9 @@
 *.log
 *.idb
 *.tlog
+.vs/
 vs2015/bin/*
 vs2015/.vs/*
 vs2015/x64/*
 build/
+vs2015/packages/*
