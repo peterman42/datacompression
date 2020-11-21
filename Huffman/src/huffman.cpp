@@ -1,4 +1,5 @@
 #include <huffman.h>
+#include <iostream>
 #include <algorithm>
 #include "exceptions/priority_queue_exception.h"
 #include "exceptions/huffman_tree_exception.h"
@@ -63,6 +64,16 @@ void Huffman::mergeNodesWithLessProbability(std::list<Node>& priority_queue)
         priority_queue.push_front(new_node);
 }
 
+///////////////////////////////////////////////////////////////////////////////
+void Huffman::printHuffmanCodes(const huffman_code_map& codes)
+{
+    for(const auto& pair : codes)
+    {
+        std::cout << pair.first << " :: "
+                  << toString(pair.second)
+                  << std::endl;
+    }
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 std::string Huffman::toString(const huffman_code& code)

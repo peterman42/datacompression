@@ -18,6 +18,8 @@ public:
     void decode(const std::string& text);
     ///////////////////////////////////////////////////////////////////////////////
     const huffman_code_map& buildCodesMap();
+    ///////////////////////////////////////////////////////////////////////////////
+    void printHuffmanCodes(const huffman_code_map& codes);
 
     Huffman() = default;
     ~Huffman() = default;
