@@ -58,7 +58,6 @@ TEST_F(HuffmanFixture, buildCodesMap)
     const auto& actual_huffman_codes = huffman.buildCodesMap();
 
     // Then
-
     for(const auto& item : actual_huffman_codes)
     {
         auto code = expected_huffman_codes.at(item.first);

@@ -24,5 +24,5 @@ TEST(Node, isLeafReturnsFalse)
     auto actual = node.isLeaf();
 
     // Then
-    EXPECT_FALSE(actual);
+    EXPECT_TRUE(actual);
 }
