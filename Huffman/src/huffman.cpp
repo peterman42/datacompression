@@ -11,7 +11,7 @@ namespace DataCompression { namespace Huffman {
 void Huffman::encode(const std::string& text)
 {
 
-    auto priority_queue = countCharacters(text);
+    priority_queue = countCharacters(text);
     sortBufferAsc(priority_queue);
 
     // Merge the nodes into the priority queue.
@@ -52,16 +52,12 @@ const huffman_code_map& Huffman::buildCodesMap()
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-void Huffman::mergeNodesWithLessProbability(std::list<Node>& priority_queue)
+void Huffman::printPriorityQueue()
 {
-        auto first_node = priority_queue.front();
-        priority_queue.pop_front();
-        auto second_node = priority_queue.front();
-        priority_queue.pop_front();
-        auto new_node = Node( std::make_shared<Node>(first_node)
-                            , std::make_shared<Node>(second_node)
-                            , first_node.value + second_node.value);
-        priority_queue.push_front(new_node);
+    for(const auto& node : priority_queue)
+    {
+        std::cout << node.label << "\t\t|\t\t" << node.value << std::endl;
+    }
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -73,6 +69,19 @@ void Huffman::printHuffmanCodes(const huffman_code_map& codes)
                   << toString(pair.second)
                   << std::endl;
     }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+void Huffman::mergeNodesWithLessProbability(std::list<Node>& priority_queue)
+{
+        auto first_node = priority_queue.front();
+        priority_queue.pop_front();
+        auto second_node = priority_queue.front();
+        priority_queue.pop_front();
+        auto new_node = Node( std::make_shared<Node>(first_node)
+                            , std::make_shared<Node>(second_node)
+                            , first_node.value + second_node.value);
+        priority_queue.push_front(new_node);
 }
 
 ///////////////////////////////////////////////////////////////////////////////

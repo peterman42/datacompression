@@ -19,6 +19,8 @@ public:
     ///////////////////////////////////////////////////////////////////////////////
     const huffman_code_map& buildCodesMap();
     ///////////////////////////////////////////////////////////////////////////////
+    void printPriorityQueue();
+    ///////////////////////////////////////////////////////////////////////////////
     void printHuffmanCodes(const huffman_code_map& codes);
 
     Huffman() = default;
@@ -29,6 +31,7 @@ public:
     Huffman& operator=(Huffman&& T) = default;
 
     BTree binary_tree;
+    std::list<Node> priority_queue;
 
 private:
 
