@@ -45,8 +45,7 @@ const huffman_code_map& Huffman::buildCodesMap()
     // Make a depth-first traverse.
     // During the traverse the codes/weights are set for each node.
     binary_tree.traverse();
-	auto huffman_codes = huffman_code();
-    binary_tree.root->createHuffmanCodes(huffman_codes);
+    binary_tree.root->createHuffmanCodes();
 
     return *HuffmanCodes::instance().codes;
 }

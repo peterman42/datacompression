@@ -38,7 +38,7 @@ public:
     bool isLeaf();
 
     ///////////////////////////////////////////////////////////////////////////////
-    void createHuffmanCodes(huffman_code);
+    void createHuffmanCodes(huffman_code = huffman_code());
 
     ~Node() = default;
     Node(const Node& T) = default;
