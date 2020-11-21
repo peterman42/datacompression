@@ -3,7 +3,7 @@
 namespace DataCompression { namespace Huffman {
 
 HuffmanCodes::HuffmanCodes()
-    : codes(nullptr)
+    : codes(std::unique_ptr<huffman_code_map>(new huffman_code_map()))
 {}
 
 HuffmanCodes& HuffmanCodes::instance()
