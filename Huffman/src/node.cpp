@@ -67,8 +67,7 @@ void Node::createHuffmanCodes( huffman_code appended_code)
     appended_code.push_back(weight);
     if(isLeaf())
     {
-        code = appended_code;
-        HuffmanCodes::instance().codes->insert(std::pair<char,huffman_code>(label,code));
+        saveHuffmanCodeForLeaf(appended_code);
         return;
     }
 
