@@ -80,6 +80,12 @@ void Node::trasmitCurrentCodeToInternalNode(std::shared_ptr<Node> node, huffman_
 {
     node->createHuffmanCodes(code);
 }
+
+///////////////////////////////////////////////////////////////////////////////
+void Node::saveHuffmanCodeForLeaf(const huffman_code& huffman_code)
+{
+    code = huffman_code;
+    HuffmanCodes::instance().codes->insert(std::pair<char,std::vector<bit>>(label,code));
 }
 
 }}
