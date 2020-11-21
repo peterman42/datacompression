@@ -71,9 +71,9 @@ void Node::createHuffmanCodes( huffman_code appended_code)
         return;
     }
 
-    if(!left) trasmitCurrentCodeToInternalNode(left, appended_code);
+    if(left) trasmitCurrentCodeToInternalNode(left, appended_code);
 
-    if(!right) trasmitCurrentCodeToInternalNode(right, appended_code);
+    if(right) trasmitCurrentCodeToInternalNode(right, appended_code);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
