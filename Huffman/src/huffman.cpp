@@ -63,4 +63,15 @@ void Huffman::mergeNodesWithLessProbability(std::list<Node>& priority_queue)
         priority_queue.push_front(new_node);
 }
 
+
+///////////////////////////////////////////////////////////////////////////////
+std::string Huffman::toString(const huffman_code& code)
+{
+    std::string str;
+    for(const auto& item : code) {
+        str.append(item.to_string());
+    }
+    return str;
+}
+
 }}
