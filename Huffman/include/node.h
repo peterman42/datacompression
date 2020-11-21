@@ -46,6 +46,9 @@ public:
     Node(Node&& T) = default;
     Node& operator=(Node&& T) = default;
 
+private:
+    ///////////////////////////////////////////////////////////////////////////////
+    void trasmitCurrentCodeToInternalNode(std::shared_ptr<Node>, huffman_code& );
 };
 } }
 #endif

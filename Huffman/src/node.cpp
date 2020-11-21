@@ -74,6 +74,12 @@ void Node::createHuffmanCodeForLeafs( huffman_code& appended_code)
 
     if(!left) left->createHuffmanCodeForLeafs(appended_code);
     if(!right) right->createHuffmanCodeForLeafs(appended_code);
+
+///////////////////////////////////////////////////////////////////////////////
+void Node::trasmitCurrentCodeToInternalNode(std::shared_ptr<Node> node, huffman_code& code)
+{
+    node->createHuffmanCodes(code);
+}
 }
 
 }}
