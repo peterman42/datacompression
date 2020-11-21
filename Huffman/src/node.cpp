@@ -62,7 +62,7 @@ bool Node::isLeaf()
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-void Node::createHuffmanCodeForLeafs( huffman_code& appended_code)
+void Node::createHuffmanCodes( huffman_code appended_code)
 {
     appended_code.push_back(weight);
     if(isLeaf())
