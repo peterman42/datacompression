@@ -72,8 +72,10 @@ void Node::createHuffmanCodeForLeafs( huffman_code& appended_code)
         return;
     }
 
-    if(!left) left->createHuffmanCodeForLeafs(appended_code);
-    if(!right) right->createHuffmanCodeForLeafs(appended_code);
+    if(!left) trasmitCurrentCodeToInternalNode(left, appended_code);
+
+    if(!right) trasmitCurrentCodeToInternalNode(right, appended_code);
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 void Node::trasmitCurrentCodeToInternalNode(std::shared_ptr<Node> node, huffman_code& code)
