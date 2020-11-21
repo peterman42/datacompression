@@ -48,7 +48,7 @@ public:
 
 private:
     ///////////////////////////////////////////////////////////////////////////////
-    void trasmitCurrentCodeToInternalNode(std::shared_ptr<Node>, huffman_code& );
+    void trasmitCurrentCodeToInternalNode(const std::shared_ptr<Node>&, huffman_code& );
 
     ///////////////////////////////////////////////////////////////////////////////
     void saveHuffmanCodeForLeaf(const huffman_code&);

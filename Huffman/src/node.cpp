@@ -77,7 +77,7 @@ void Node::createHuffmanCodes( huffman_code appended_code)
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-void Node::trasmitCurrentCodeToInternalNode(std::shared_ptr<Node> node, huffman_code& code)
+void Node::trasmitCurrentCodeToInternalNode(const std::shared_ptr<Node>& node, huffman_code& code)
 {
     node->createHuffmanCodes(code);
 }
