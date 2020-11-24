@@ -14,20 +14,23 @@ void Huffman::encode(const std::string& text)
     priority_queue = countCharacters(text);
     sortBufferAsc(priority_queue);
 
+    std::list<Node> priority_queue_clone;
+    clonePriorityQueue(priority_queue_clone);
+
     // Merge the nodes into the priority queue.
-    while(priority_queue.size() != 1)
+    while(priority_queue_clone.size() != 1)
     {
         // Pick the top 2 nodes and merge them.
-        mergeNodesWithLessProbability(priority_queue);
+        mergeNodesWithLessProbability(priority_queue_clone);
 
         // Sort the buffer again.
-        sortBufferAsc(priority_queue);
+        sortBufferAsc(priority_queue_clone);
     }
 
-    if(priority_queue.size() != 1)
+    if(priority_queue_clone.size() != 1)
         throw PriorityQueueException(MESSAGE_PRIORITY_QUEUE_DOES_NOT_CONTAIN);
 
-    binary_tree.add(priority_queue.front());
+    binary_tree.add(priority_queue_clone.front());
 
 }
 
