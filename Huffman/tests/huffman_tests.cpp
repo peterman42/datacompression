@@ -1,5 +1,7 @@
 #include "gtest/gtest.h"
 #include "huffman.h"
+#include <fstream>
+#include <vector>
 
 using namespace DataCompression::Huffman;
 
@@ -25,6 +27,8 @@ public :
         };
 
         given_text = "This is a test text.";
+        given_filename = "/home/petros/Documents/test_video.mp4";
+
     }
 
     void TearDown( ) {
@@ -34,6 +38,7 @@ public :
 
     huffman_code_map expected_huffman_codes;
     std::string given_text;
+    std::string given_filename;
 };
 
 
@@ -56,6 +61,7 @@ TEST_F(HuffmanFixture, buildCodesMap)
     // When
     huffman.encode(std::vector<char>(given_text.begin(), given_text.end()));
     const auto& actual_huffman_codes = huffman.buildCodesMap();
+    huffman.printHuffmanCodes(actual_huffman_codes);
 
     // Then
     for(const auto& item : actual_huffman_codes)
@@ -63,4 +69,21 @@ TEST_F(HuffmanFixture, buildCodesMap)
         auto code = expected_huffman_codes.at(item.first);
         ASSERT_EQ(item.second, code );
     }
+}
+
+TEST_F(HuffmanFixture, DISABLE_compressBinary)
+{
+    // Given
+    Huffman huffman;
+    std::vector<char> file_bytes;
+    load_file(given_filename, file_bytes);
+
+    // When
+    huffman.encode(file_bytes);
+    const auto& actual_huffman_codes = huffman.buildCodesMap();
+    huffman.printPriorityQueue();
+
+    // Then
+    huffman.printHuffmanCodes(actual_huffman_codes);
+
 }
