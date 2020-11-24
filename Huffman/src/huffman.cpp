@@ -94,4 +94,12 @@ std::string Huffman::toString(const huffman_code& code)
     return str;
 }
 
+///////////////////////////////////////////////////////////////////////////////
+void Huffman::clonePriorityQueue(std::list<Node>& clone)
+{
+    std::copy(priority_queue.begin(),
+              priority_queue.end(),
+              std::back_inserter(clone));
+}
+
 }}
