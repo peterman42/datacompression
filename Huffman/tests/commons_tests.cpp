@@ -19,7 +19,7 @@ TEST(Commons, countCharacters) {
                              , Node('x',1)});
 
     // When
-    auto actual = countCharacters(text);
+    auto actual = countCharacters(std::vector<char>(text.begin(), text.end()));
 
     // Then
     EXPECT_EQ(expected.size(), actual.size());

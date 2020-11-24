@@ -42,7 +42,7 @@ TEST_F(HuffmanFixture, encode)
     // Given
     Huffman huffman;
     // When
-    huffman.encode(given_text);
+    huffman.encode(std::vector<char>(given_text.begin(), given_text.end()));
 
     // Then
     EXPECT_TRUE(huffman.binary_tree.root);
@@ -54,7 +54,7 @@ TEST_F(HuffmanFixture, buildCodesMap)
     Huffman huffman;
 
     // When
-    huffman.encode(given_text);
+    huffman.encode(std::vector<char>(given_text.begin(), given_text.end()));
     const auto& actual_huffman_codes = huffman.buildCodesMap();
 
     // Then

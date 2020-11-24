@@ -8,7 +8,7 @@
 namespace DataCompression { namespace Huffman {
 
 ///////////////////////////////////////////////////////////////////////////////
-void Huffman::encode(const std::string& text)
+void Huffman::encode(const std::vector<char>& text)
 {
 
     priority_queue = countCharacters(text);
@@ -35,7 +35,7 @@ void Huffman::encode(const std::string& text)
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-void Huffman::decode(const std::string& text)
+void Huffman::decode(const std::vector<char>& text)
 {
 
 }

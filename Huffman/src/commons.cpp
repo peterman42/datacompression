@@ -5,7 +5,7 @@
 
 namespace DataCompression { namespace Huffman {
 
-std::list<Node> countCharacters (const std::string& text)
+std::list<Node> countCharacters (const std::vector<char>& text)
 {
     std::list <Node> list_of_characters;
     try
