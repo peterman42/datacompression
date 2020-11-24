@@ -6,6 +6,7 @@
 #include <list>
 #include <map>
 #include <memory>
+#include <vector>
 
 #define MESSAGE_HUFFMAN_TREE_DOES_NOT_EXIST "Huffman Tress does not exist."
 #define MESSAGE_PRIORITY_QUEUE_DOES_NOT_CONTAIN "The priority queue should contain one node."
@@ -23,6 +24,9 @@ std::list<Node> countCharacters (const std::string& text);
 
 ///////////////////////////////////////////////////////////////////////////////
 void sortBufferAsc(std::list<Node>& priority_queue);
+
+///////////////////////////////////////////////////////////////////////////////
+void load_file(const std::string& file_name, std::vector<char>& buffer);
 
 }}
 

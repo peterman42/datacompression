@@ -1,6 +1,7 @@
 #include "commons.h"
 #include <algorithm>
 #include "node.h"
+#include <fstream>
 
 namespace DataCompression { namespace Huffman {
 
@@ -41,6 +42,21 @@ void sortBufferAsc(std::list<Node>& priority_queue)
     {
         return nodeA.value < nodeB.value;
     });
+}
+
+///////////////////////////////////////////////////////////////////////////////
+void load_file(const std::string& file_name, std::vector<char>& buffer)
+{
+    std::ifstream inFile(file_name, std::ios_base::binary);
+    inFile.seekg(0, std::ios_base::end);
+    size_t length = inFile.tellg();
+    inFile.seekg(0, std::ios_base::beg);
+
+    buffer.reserve(length);
+    std::copy( std::istreambuf_iterator<char>(inFile),
+               std::istreambuf_iterator<char>(),
+               std::back_inserter(buffer) );
+
 }
 
 }}
